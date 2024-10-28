@@ -51,7 +51,7 @@ Widget reviewRideBottomSheet(
                         MaterialPageRoute(builder: (_) => const TurnByTurn())),
                     style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.all(20)),
-                    child: const Row(
+                    child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text('Confrim Navigation'),

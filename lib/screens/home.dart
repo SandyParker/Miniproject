@@ -65,7 +65,7 @@ class _HomeState extends State<Home> {
                                 builder: (_) => const PrepareRide())),
                         style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.all(20)),
-                        child: const Row(
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text('Where do you wanna go today?'),
