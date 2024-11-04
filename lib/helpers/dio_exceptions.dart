@@ -39,7 +39,7 @@ class DioExceptions implements Exception {
       case 500:
         return 'Internal server error';
       default:
-        return 'Oops something went wrong';
+        return 'Oops something went wrong'+statusCode.toString();
     }
   }
 

@@ -18,6 +18,10 @@ allprojects {
     }
 }
 
+configurations {
+    all*.exclude group: 'com.mapbox.mapboxsdk', module: 'mapbox-android-telemetry'
+}
+
 rootProject.buildDir = "../build"
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"

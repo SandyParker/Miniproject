@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.example.navi"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "25.1.8937393"//flutter.ndkVersion
 
     buildFeatures {
         viewBinding true
@@ -28,10 +28,13 @@ android {
         applicationId = "com.example.navi"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdkVersion 21
+        targetSdkVersion 34
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -43,6 +46,19 @@ android {
     }
 }
 
+dependencies {
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation ('com.mapbox.maps:android:10.10.0', {
+        exclude group: 'com.mapbox.common', module: 'common'
+    })
+}
+
 flutter {
     source = "../.."
+}
+
+
+configurations {
+    all*.exclude group: 'com.mapbox.mapboxsdk', module: 'mapbox-android-telemetry'
+    all*.exclude group: 'com.mapbox.mapboxsdk', module: 'mapbox-android-core'
 }

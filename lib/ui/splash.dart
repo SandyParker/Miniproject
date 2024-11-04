@@ -55,6 +55,7 @@ class _SplashState extends State<Splash> {
     //print("Working?");
     print(currentAddress);
     LatLng currentLatLng = LatLng(locationData.latitude!, locationData.longitude!);
+    print(currentLatLng);
     for (int i = 0; i < POI.length; i++) {
       Map modifiedResponse = await getDirectionsAPIResponsedir(currentLatLng, i);
       saveDirectionsAPIResponse(i, json.encode(modifiedResponse));
