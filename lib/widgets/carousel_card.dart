@@ -11,7 +11,7 @@ Widget carouselCard(int index, num distance, num duration) {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CircleAvatar(
-            backgroundImage: NetworkImage(POI[index]['image']),
+            backgroundImage: AssetImage(POI[index]['image']),//NetworkImage(POI[index]['image']),
             radius: 20,
           ),
           const SizedBox(width: 10),

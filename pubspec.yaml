@@ -35,7 +35,7 @@ dependencies:
   shared_preferences: ^2.0.13
   flutter_native_splash:
   path_provider:
-  location:
+  location: ^4.3.0
   google_fonts:
   flutter_dotenv: ^5.0.2
   dio: ^4.0.4
@@ -81,6 +81,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
+    - assets/carditems/
     - assets/icon/
     - assets/image/
     - assets/config/
