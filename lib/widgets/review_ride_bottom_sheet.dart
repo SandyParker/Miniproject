@@ -15,6 +15,7 @@ Widget reviewRideBottomSheet(
     child: SizedBox(
       width: MediaQuery.of(context).size.width,
       child: Card(
+        color: Color(0xff404258),
         clipBehavior: Clip.antiAlias,
         child: Padding(
           padding: const EdgeInsets.all(15),
@@ -27,7 +28,7 @@ Widget reviewRideBottomSheet(
                       style: Theme.of(context)
                           .textTheme
                           .titleMedium
-                          ?.copyWith(color: Colors.indigo)),
+                          ?.copyWith(color: Color(0xFFABAED2))),
                 ),
                 /*Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
@@ -46,15 +47,18 @@ Widget reviewRideBottomSheet(
                             fontWeight: FontWeight.bold, fontSize: 18)),
                   ),
                 ),*/
+                SizedBox(),
                 ElevatedButton(
                     onPressed: () => Navigator.push(context,
                         MaterialPageRoute(builder: (_) => const TurnByTurn())),
                     style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black12,
+                    foregroundColor: Color(0xFFABAED2),
                         padding: const EdgeInsets.all(20)),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Confrim Navigation'),
+                          Text('Confrim Navigation',style: TextStyle(color: Color(0xFFABAED2)),),
                         ])),
               ]),
         ),

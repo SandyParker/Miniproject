@@ -48,6 +48,14 @@ android {
 
 dependencies {
     implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.google.gms:google-services:4.4.2'
+//    implementation 'com.google.android.gms:play-services-basement:21.0.1'
+    implementation 'com.google.android.gms:play-services-location:21.3.0'
+//    implementation 'com.google.android.gms:play-services-maps:21.0.1'
+
+    implementation platform('com.google.firebase:firebase-bom:32.0.0') // example version, update to the latest stable
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.android.gms:play-services-location'
 }
 
 flutter {

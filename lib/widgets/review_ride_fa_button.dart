@@ -7,7 +7,8 @@ import '../screens/review_ride.dart';
 
 Widget reviewRideFaButton(BuildContext context) {
   return FloatingActionButton.extended(
-      icon: const Icon(Icons.local_taxi),
+    backgroundColor: Color(0xff404258),
+      icon: const Icon(Icons.local_taxi,color: Color(0xFFABAED2),),
       onPressed: () async {
         // Get directions API response and pass to modified response
         LatLng sourceLatLng = getTripLatLngFromSharedPrefs('source');
@@ -20,5 +21,5 @@ Widget reviewRideFaButton(BuildContext context) {
             MaterialPageRoute(
                 builder: (_) => ReviewRide(modifiedResponse: modifiedresponse)));
       },
-      label: const Text('Review Ride'));
+      label: const Text('Review Ride',style: TextStyle(color: Color(0xFFABAED2)),));
 }

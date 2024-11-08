@@ -98,6 +98,8 @@ class _ReviewRideState extends State<ReviewRide> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xff404258),
+        foregroundColor: Color(0xFFABAED2),
         leading: IconButton(
             onPressed: () {
               Navigator.of(context).pop();
@@ -111,13 +113,14 @@ class _ReviewRideState extends State<ReviewRide> {
             SizedBox(
               height: MediaQuery.of(context).size.height,
               child: MapboxMap(
+                styleString: MapboxStyles.SATELLITE_STREETS,
                 accessToken: dotenv.env['MAPBOX_ACCESS_TOKEN'],
                 initialCameraPosition: _initialCameraPosition,
                 onMapCreated: _onMapCreated,
                 onStyleLoadedCallback: _onStyleLoadedCallback,
-                scrollGesturesEnabled: false,
-                zoomGesturesEnabled: false,
-                doubleClickZoomEnabled: false,
+                // scrollGesturesEnabled: false,
+                // zoomGesturesEnabled: false,
+                // doubleClickZoomEnabled: false,
                 myLocationTrackingMode: MyLocationTrackingMode.TrackingGPS,
                 //minMaxZoomPreference: const MinMaxZoomPreference(11, 11),
               ),

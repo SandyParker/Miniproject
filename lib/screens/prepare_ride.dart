@@ -73,9 +73,18 @@ class _PrepareRideState extends State<PrepareRide> {
     setsourceanddestination(carouselData, 0);
   }
 
+  _Tiltcam(double tilt) async{
+    mapController.animateCamera(CameraUpdate.tiltTo(tilt));
+  }
   _addSourceAndLineLayer(int index, bool removeLayer) async {
     // Can animate camera to focus on the item
-    mapController.animateCamera(CameraUpdate.newCameraPosition(_POI[index]));
+    CameraPosition targetCameraPosition = CameraPosition(
+      zoom: 18,
+      target: _POI[index].target,
+      tilt: 45.0, // Set your desired tilt
+    );
+    mapController.animateCamera(CameraUpdate.newCameraPosition(targetCameraPosition));
+    //mapController.animateCamera(CameraUpdate.tiltTo(90));
 
     // Add a polyLine between source and destination
     Map geometry = getGeometryFromSharedPrefs(carouselData[index]['index']);
@@ -160,6 +169,8 @@ class _PrepareRideState extends State<PrepareRide> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xff404258),
+        foregroundColor: Color(0xFFABAED2),
         leading: IconButton(
             onPressed: () => Navigator.pop(context),
             icon: const Icon(Icons.arrow_back)),
@@ -171,16 +182,17 @@ class _PrepareRideState extends State<PrepareRide> {
       body: SafeArea(
         child: Stack(children: [
           MapboxMap(
-            styleString:
-            isLight ? MapboxStyles.MAPBOX_STREETS : MapboxStyles.DARK,
+            styleString: 'mapbox://styles/sandy-parker/clmkof8hw01vn01r79wf332cu',
             accessToken: dotenv.env['MAPBOX_ACCESS_TOKEN'],
             onMapCreated: _onMapCreated,
             initialCameraPosition: const CameraPosition(
-                target: LatLng(12.986908, 79.972217), zoom: 15),
+              tilt: 90,
+                target: LatLng(12.986908, 79.972217)),
             onStyleLoadedCallback: _onStyleLoadedCallback,
             myLocationEnabled: true,
+            rotateGesturesEnabled: true,
             myLocationTrackingMode: MyLocationTrackingMode.TrackingGPS,
-            //minMaxZoomPreference: const MinMaxZoomPreference(14, 20),
+            //minMaxZoomPreference: const MinMaxZoomPreference(10, 18),
           ),
           CarouselSlider(
             items: carouselItems,
@@ -192,11 +204,14 @@ class _PrepareRideState extends State<PrepareRide> {
               scrollDirection: Axis.horizontal,
               onPageChanged:
                   (int index, CarouselPageChangedReason reason) async {
+                    _Tiltcam(75);
                 setState(()  {
                   pageIndex = index;
                   setsourceanddestination(carouselData, index);
                 });
+
                 _addSourceAndLineLayer(index, true);
+
               },
             ),
           ),

@@ -33,14 +33,17 @@ class _HomeState extends State<Home> {
         children: [
           // Add MapboxMap here and enable user location
           MapboxMap(initialCameraPosition: _initialCameraPosition,
+            styleString: 'mapbox://styles/sandy-parker/clmkof8hw01vn01r79wf332cu',
             accessToken: dotenv.env["MAPBOX_ACCESS_TOKEN"],
-            myLocationEnabled: true
+            myLocationEnabled: true,
+              minMaxZoomPreference: const MinMaxZoomPreference(10, 25)
           ),
           Positioned(
             bottom: 0,
             child: SizedBox(
               width: MediaQuery.of(context).size.width,
               child: Card(
+                color: Color(0xff404258),
                 clipBehavior: Clip.antiAlias,
                 child: Padding(
                   padding: const EdgeInsets.all(15),
@@ -51,12 +54,14 @@ class _HomeState extends State<Home> {
                       const Text(
                         'Hi there!',
                         style: TextStyle(
+                          color: Color(0xFFABAED2),
                             fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 20),
-                      const Text('You are currently here:'),
+                      const Text('You are currently here:',
+                      style: TextStyle(color: Color(0xFFABAED2)),),
                       Text(currentAddress,
-                          style: const TextStyle(color: Colors.indigo)),
+                          style: const TextStyle(color: Color(0xFF8286B4))),
                       const SizedBox(height: 20),
                       ElevatedButton(
                         onPressed: () => Navigator.push(
@@ -64,11 +69,12 @@ class _HomeState extends State<Home> {
                             MaterialPageRoute(
                                 builder: (_) => const PrepareRide())),
                         style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black12,
                             padding: const EdgeInsets.all(20)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('Where do you wanna go today?'),
+                            Text('Where do you wanna go today?', style: TextStyle(color: Color(0xFFABAED2)),),
                           ],
                         ),
                       ),
